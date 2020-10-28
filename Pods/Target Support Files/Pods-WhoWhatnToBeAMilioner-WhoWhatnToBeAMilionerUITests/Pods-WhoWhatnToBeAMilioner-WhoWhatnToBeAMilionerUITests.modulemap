@@ -1,0 +1,6 @@
+framework module Pods_WhoWhatnToBeAMilioner_WhoWhatnToBeAMilionerUITests {
+  umbrella header "Pods-WhoWhatnToBeAMilioner-WhoWhatnToBeAMilionerUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

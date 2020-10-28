@@ -14,16 +14,24 @@ enum GameErrors: Error {
 
 struct Game {
     
-    let questions: [Question]
+    private let questions: [Question]
     
-    var userAnswers = [Answer]()
-    var score: Int = 0
+    private var userAnswers = [Answer]()
+    private var score: Int = 0
+    
+
+    private var date: Date = Date()
     
     private var curentQuestionInd: Int = 0
     var question: Question {
         assert(isValid(curentQuestionInd), "Index out of range.")
         return questions[curentQuestionInd]
     }
+        
+    private func isValid(_ questionId: Int) -> Bool {
+        return questionId >= 0 && questionId < questions.count
+    }
+
 
     mutating func goToNextQuestion() throws {
         curentQuestionInd += 1
@@ -33,9 +41,18 @@ struct Game {
         }
     }
         
-    private func isValid(_ questionId: Int) -> Bool {
-        return questionId > 0 && questionId < questions.count
+    mutating func addUserAnswer(answer: Answer) {
+        switch answer {
+        case .right:
+            score += 10
+        default:
+            return
+        }
+        
+        
+        userAnswers.append(answer)
     }
+    
     
     init(questions: [Question]) {
         self.questions = questions
@@ -45,6 +62,34 @@ struct Game {
 extension Game {
     static var empty: Game {
         return Game(questions: [])
+    }
+}
+
+extension Game: Codable {
+    
+    private enum CodingKeys: CodingKey {
+        case questions
+        case userAnswers
+        case score
+        case date
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        questions = try container.decode([Question].self, forKey: .questions)
+        userAnswers = try container.decode([Answer].self, forKey: .userAnswers)
+        score = try container.decode(Int.self, forKey: .score)
+        date = try container.decode(Date.self, forKey: .date)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(questions, forKey: .questions)
+        try container.encode(userAnswers, forKey: .userAnswers)
+        try container.encode(score, forKey: .userAnswers)
+        try container.encode(date, forKey: .date)
     }
 }
 

@@ -50,7 +50,16 @@ class StartViewController: UIViewController {
                 return
             }
             
-            destination.game = .empty
+            let question = Question(question: "qwe", answers: [Answer.right("1"),
+                                                               Answer.wrong("2"),
+                                                               Answer.wrong("3"),
+                                                               Answer.wrong("4")]
+            )
+            let game = Game(questions: [question])
+            
+            NetworkServise.defolt.getQuestions()
+            
+            destination.game = game
             player.stop()
         default:
             return

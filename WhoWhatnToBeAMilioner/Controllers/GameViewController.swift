@@ -49,8 +49,21 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpWithNewQuestion()
     }
     
+    private func setUpWithNewQuestion() {
+        let lables = [answer1Lable, answer2Lable, answer3Lable, answer4Lable]
+        let answers = game.question.answers.shuffled()
+
+        let qwe = zip(lables, answers)
+        for (lable, answer) in qwe {
+            lable?.text = answer.answer
+        }
+        
+        questionLable.text = game.question.question
+    }
+
     private func setUp(_ lable: UILabel) {
         lable.layer.cornerRadius = 10
         lable.layer.borderWidth = 4
@@ -64,21 +77,25 @@ class GameViewController: UIViewController {
         lable.addGestureRecognizer(tapGesture)
     }
     
-    @objc private func tapLableAction(_ sender: UILabel) {
-        let question = game.question
-        let userAnswer = sender.text ?? ""
+    @objc private func tapLableAction(_ sender: UIGestureRecognizer) {
+        guard let lable = sender.view as? UILabel else {
+            return
+        }
         
+        let question = game.question
+        let userAnswer = lable.text ?? ""
+    
         guard let answer = question.answers.filter({ $0 == userAnswer }).first else {
             return
         }
         
         switch answer {
         case .right:
-            setUpWithRighrAnswer(sender)
+            setUpWithRighrAnswer(lable)
         case .wrong:
             do {
                 let rightAnswer = try question.getRightAnswer()
-                setUpWithWrongAnswer(sender, rightAnswer: rightAnswer)
+                setUpWithWrongAnswer(lable, rightAnswer: rightAnswer)
             } catch GameErrors.CantFindRightAnswer {
                 let alert = UIAlertController(title: "Error",
                                               message: "Something wrong with answer",
@@ -90,7 +107,7 @@ class GameViewController: UIViewController {
             }
         }
         
-        save(answer: answer)
+        game.addUserAnswer(answer: answer)
     }
     
     private func setUpWithRighrAnswer(_ lable: UILabel) {
@@ -117,11 +134,7 @@ class GameViewController: UIViewController {
             print("Error getting the audio file")
         }
     }
-    
-    private func save(answer: Answer) {
-        game.userAnswers.append(answer)
-    }
-    
+        
 }
 
 extension GameViewController: AVAudioPlayerDelegate {
@@ -133,12 +146,16 @@ extension GameViewController: AVAudioPlayerDelegate {
     private func goToNextQuestion() {
         do {
             try game.goToNextQuestion()
+            setUpWithNewQuestion()
         } catch {
             finishTheGame()
         }
     }
-
+    
     private func finishTheGame() {
+        let careTaker = Caretaker()
+        careTaker.saveGame(game: game)
         
+        dismiss(animated: true)
     }
 }
