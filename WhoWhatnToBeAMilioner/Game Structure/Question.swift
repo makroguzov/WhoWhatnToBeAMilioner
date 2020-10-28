@@ -8,8 +8,8 @@
 import Foundation
 
 struct Question: Codable {
-    let question: String
-    let answers: [Answer]
+    var question: String = ""
+    var answers: [Answer] = []
     
     func getRightAnswer() throws -> Answer {
         for answer in answers {
@@ -23,4 +23,19 @@ struct Question: Codable {
         
         throw GameErrors.CantFindRightAnswer
     }
+    
+    init(json: JSON) {
+        guard let question = json["question"] as? String,
+              var answers = json["answers"] as? [String] else {
+            return
+        }
+        
+        self.question = question
+        
+        self.answers.append(.right(answers.first ?? ""))
+        answers.remove(at: 0)
+        
+        answers.forEach({ self.answers.append(.wrong($0)) })
+    }
 }
+

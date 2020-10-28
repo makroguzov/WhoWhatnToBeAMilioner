@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import JGProgressHUD
 
 class GameViewController: UIViewController {
     
@@ -38,7 +39,7 @@ class GameViewController: UIViewController {
     }
     
     
-    var game: Game = .empty
+    private var game: Game = .empty
     
     private var player = AVAudioPlayer() {
         didSet {
@@ -49,7 +50,17 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpWithNewQuestion()
+        let hud = JGProgressHUD(style: .dark)
+        hud.show(in: view)
+        
+        NetworkServise.defolt.getQuestions { [weak self] game in
+            self?.game = game
+            DispatchQueue.main.async {
+                self?.setUpWithNewQuestion()
+                self?.makeLablesVisible()
+                hud.dismiss(animated: true)
+            }
+        }
     }
     
     private func setUpWithNewQuestion() {
@@ -59,9 +70,15 @@ class GameViewController: UIViewController {
         let qwe = zip(lables, answers)
         for (lable, answer) in qwe {
             lable?.text = answer.answer
+            lable?.backgroundColor = .none
         }
         
         questionLable.text = game.question.question
+    }
+    
+    private func makeLablesVisible() {
+        let lables = [questionLable, answer1Lable, answer2Lable, answer3Lable, answer4Lable]
+        lables.forEach({ $0?.isHidden = false })
     }
 
     private func setUp(_ lable: UILabel) {
@@ -70,6 +87,8 @@ class GameViewController: UIViewController {
         lable.layer.borderColor = UIColor.blue.cgColor
         
         lable.isUserInteractionEnabled = true
+        
+        lable.isHidden = true
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapLableAction(_:)))
         tapGesture.numberOfTapsRequired = 1

@@ -46,20 +46,6 @@ class StartViewController: UIViewController {
         
         switch identifier {
         case "StartTheGame":
-            guard let destination = segue.destination as? GameViewController else {
-                return
-            }
-            
-            let question = Question(question: "qwe", answers: [Answer.right("1"),
-                                                               Answer.wrong("2"),
-                                                               Answer.wrong("3"),
-                                                               Answer.wrong("4")]
-            )
-            let game = Game(questions: [question])
-            
-            NetworkServise.defolt.getQuestions()
-            
-            destination.game = game
             player.stop()
         default:
             return

@@ -7,8 +7,11 @@
 
 import Foundation
 
+typealias JSON = [String: Any]
+
 class NetworkServise {
  
+    
     static let defolt = NetworkServise()
     private init(){}
     
@@ -22,15 +25,14 @@ class NetworkServise {
         
         uc.queryItems = [
             URLQueryItem(name: "qType", value: "2"),
-            URLQueryItem(name: "count", value: "15")
+            URLQueryItem(name: "count", value: "5")
         ]
         
         return uc
     }()    
     
-    func getQuestions() {
+    func getQuestions(complition: @escaping (_ game: Game) -> Void) {
         guard let url = urlConstructor.url else {
-            print("url")
             return
         }
         
@@ -40,12 +42,14 @@ class NetworkServise {
                 return
             }
             
-            guard let data = data, let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) else {
-                print("aw;eof")
+            guard let data = data,
+                  let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
+                  let questionsJSON = (json as? JSON)?["data"] as? [JSON]  else {
                 return
             }
             
-            print(json)
+            let questions = questionsJSON.map({ Question(json: $0) })
+            complition(Game(questions: questions))
         }.resume()
     }
     
