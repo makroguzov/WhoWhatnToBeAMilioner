@@ -38,7 +38,6 @@ class GameViewController: UIViewController {
         }
     }
     
-    
     private var game: Game = .empty
     
     private var player = AVAudioPlayer() {
@@ -49,7 +48,12 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+     
         
+        loadData()
+    }
+    
+    private func loadData() {
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: view)
         
@@ -66,14 +70,52 @@ class GameViewController: UIViewController {
     private func setUpWithNewQuestion() {
         let lables = [answer1Lable, answer2Lable, answer3Lable, answer4Lable]
         let answers = game.question.answers.shuffled()
-
+        
         let qwe = zip(lables, answers)
         for (lable, answer) in qwe {
-            lable?.text = answer.answer
-            lable?.backgroundColor = .none
+            guard let lable = lable else {
+                return
+            }
+            
+            let answer = answer.answer
+            
+            let lableBounds = getLableBounds(for: answer)
+            lable.frame = CGRect(x: lable.frame.origin.x,
+                                 y: lable.frame.origin.y,
+                                 width: lableBounds.width,
+                                 height: lableBounds.height
+            )
+            
+            lable.text = answer
+            lable.backgroundColor = .none
         }
         
-        questionLable.text = game.question.question
+        let question = game.question.question
+        
+        let lableBounds = getLableBounds(for: question)
+        questionLable.frame = CGRect(x: questionLable.frame.origin.x,
+                                     y: questionLable.frame.origin.y,
+                                     width: lableBounds.width,
+                                     height: lableBounds.height
+        )
+        
+        questionLable.text = question
+    }
+    
+    private func getLableBounds(for text: String) -> CGRect {
+        let constraintRect = CGSize(width: view.frame.width,
+                                    height: .greatestFiniteMagnitude
+        )
+        
+        let font = UIFont.boldSystemFont(ofSize: 22)
+        
+        let boundingBox = text.boundingRect(with: constraintRect,
+                                            options: .usesLineFragmentOrigin,
+                                            attributes: [.font: font],
+                                            context: nil
+        )
+        
+        return boundingBox
     }
     
     private func makeLablesVisible() {
@@ -87,6 +129,7 @@ class GameViewController: UIViewController {
         lable.layer.borderColor = UIColor.blue.cgColor
         
         lable.isUserInteractionEnabled = true
+        lable.translatesAutoresizingMaskIntoConstraints = true
         
         lable.isHidden = true
         
