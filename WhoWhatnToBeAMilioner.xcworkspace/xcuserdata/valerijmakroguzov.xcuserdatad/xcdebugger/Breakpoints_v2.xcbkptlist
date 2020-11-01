@@ -14,25 +14,9 @@
             filePath = "WhoWhatnToBeAMilioner/Controllers/GameViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "setUpWithNewQuestion()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "AB97F1EE-551B-4388-B565-44C3C7F0E727"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WhoWhatnToBeAMilioner/Controllers/GameViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "getLableBounds(for:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

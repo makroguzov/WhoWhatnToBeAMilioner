@@ -36,7 +36,7 @@ struct Game {
     mutating func goToNextQuestion() throws {
         curentQuestionInd += 1
         
-        if curentQuestionInd > questions.count {
+        if curentQuestionInd > questions.count - 1 {
             throw GameErrors.FinishTheGame
         }
     }
@@ -48,8 +48,7 @@ struct Game {
         default:
             return
         }
-        
-        
+                
         userAnswers.append(answer)
     }
     

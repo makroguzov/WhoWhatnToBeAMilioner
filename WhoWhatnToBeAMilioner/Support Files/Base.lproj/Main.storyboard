@@ -79,53 +79,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zK-dc-7nq" userLabel="Я">
-                                <rect key="frame" x="107" y="244" width="200" height="31.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zK-dc-7nq" userLabel="Я">
+                                <rect key="frame" x="57" y="244" width="300" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="SaH-a2-8uP"/>
+                                    <constraint firstAttribute="width" constant="300" id="rO9-ee-Lvp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="deq-yI-hbC">
-                                <rect key="frame" x="107" y="475.5" width="200" height="250"/>
+                                <rect key="frame" x="57" y="486" width="300" height="176"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hau-W8-FAa">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaq-3B-b5d">
-                                        <rect key="frame" x="0.0" y="67.5" width="200" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="49" width="300" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2S-xQ-tpD">
-                                        <rect key="frame" x="0.0" y="135" width="200" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="98" width="300" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87A-fM-cyX">
-                                        <rect key="frame" x="0.0" y="202.5" width="200" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="147" width="300" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="5Wt-t8-J3d"/>
-                                    <constraint firstAttribute="height" constant="250" id="G2q-Z0-Gkg"/>
+                                    <constraint firstAttribute="width" constant="300" id="5Wt-t8-J3d"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EfR-UV-R5f"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="deq-yI-hbC" firstAttribute="top" secondItem="7zK-dc-7nq" secondAttribute="bottom" constant="200" id="Gn0-UQ-P3m"/>
+                            <constraint firstItem="EfR-UV-R5f" firstAttribute="bottom" secondItem="deq-yI-hbC" secondAttribute="bottom" constant="200" id="REG-Hg-TQV"/>
                             <constraint firstItem="7zK-dc-7nq" firstAttribute="top" secondItem="EfR-UV-R5f" secondAttribute="top" constant="200" id="fRH-6R-SH1"/>
                             <constraint firstItem="7zK-dc-7nq" firstAttribute="centerX" secondItem="EfR-UV-R5f" secondAttribute="centerX" id="piZ-ex-QOQ"/>
                             <constraint firstItem="deq-yI-hbC" firstAttribute="centerX" secondItem="EfR-UV-R5f" secondAttribute="centerX" id="uWT-SL-hqC"/>
@@ -142,7 +141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bo3-cv-zic" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064" y="112"/>
+            <point key="canvasLocation" x="1063.768115942029" y="111.83035714285714"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="zxs-9K-iOZ">

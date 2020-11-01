@@ -49,7 +49,6 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      
-        
         loadData()
     }
     
@@ -61,7 +60,7 @@ class GameViewController: UIViewController {
             self?.game = game
             DispatchQueue.main.async {
                 self?.setUpWithNewQuestion()
-                self?.makeLablesVisible()
+                self?.makeLables(visible: true)
                 hud.dismiss(animated: true)
             }
         }
@@ -79,59 +78,45 @@ class GameViewController: UIViewController {
             
             let answer = answer.answer
             
-            let lableBounds = getLableBounds(for: answer)
-            lable.frame = CGRect(x: lable.frame.origin.x,
-                                 y: lable.frame.origin.y,
-                                 width: lableBounds.width,
-                                 height: lableBounds.height
-            )
-            
             lable.text = answer
             lable.backgroundColor = .none
+            lable.sizeToFit()
         }
         
         let question = game.question.question
         
-        let lableBounds = getLableBounds(for: question)
-        questionLable.frame = CGRect(x: questionLable.frame.origin.x,
-                                     y: questionLable.frame.origin.y,
-                                     width: lableBounds.width,
-                                     height: lableBounds.height
-        )
-        
         questionLable.text = question
+        questionLable.sizeToFit()
+        
+        
+        makeLables(isUserInteractionEnabled: true)
     }
     
-    private func getLableBounds(for text: String) -> CGRect {
-        let constraintRect = CGSize(width: view.frame.width,
-                                    height: .greatestFiniteMagnitude
-        )
-        
-        let font = UIFont.boldSystemFont(ofSize: 22)
-        
-        let boundingBox = text.boundingRect(with: constraintRect,
-                                            options: .usesLineFragmentOrigin,
-                                            attributes: [.font: font],
-                                            context: nil
-        )
-        
-        return boundingBox
-    }
-    
-    private func makeLablesVisible() {
+    private func makeLables(visible: Bool) {
         let lables = [questionLable, answer1Lable, answer2Lable, answer3Lable, answer4Lable]
-        lables.forEach({ $0?.isHidden = false })
+        lables.forEach({ $0?.isHidden = !visible })
     }
-
+    
+    private func makeLables(isUserInteractionEnabled: Bool) {
+        let lables = [questionLable, answer1Lable, answer2Lable, answer3Lable, answer4Lable]
+        lables.forEach({ $0?.isUserInteractionEnabled = isUserInteractionEnabled })
+    }
+    
     private func setUp(_ lable: UILabel) {
-        lable.layer.cornerRadius = 10
+        lable.layer.cornerRadius = 20
+        
         lable.layer.borderWidth = 4
         lable.layer.borderColor = UIColor.blue.cgColor
-        
+        lable.clipsToBounds = true
+
         lable.isUserInteractionEnabled = true
-        lable.translatesAutoresizingMaskIntoConstraints = true
-        
         lable.isHidden = true
+        
+        lable.layer.shadowColor = UIColor.blue.cgColor
+        lable.layer.shadowRadius = 20
+        lable.layer.shadowOpacity = 0.8
+        lable.layer.shadowOffset = .zero
+        
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapLableAction(_:)))
         tapGesture.numberOfTapsRequired = 1
@@ -143,6 +128,8 @@ class GameViewController: UIViewController {
         guard let lable = sender.view as? UILabel else {
             return
         }
+        
+        makeLables(isUserInteractionEnabled: false)
         
         let question = game.question
         let userAnswer = lable.text ?? ""
@@ -179,6 +166,16 @@ class GameViewController: UIViewController {
     
     private func setUpWithWrongAnswer(_ lable: UILabel, rightAnswer: Answer) {
         play(song: .wrongAnswer)
+        
+        var rightAnswerLable: UILabel?
+        let lables = [questionLable, answer1Lable, answer2Lable, answer3Lable, answer4Lable]
+        lables.forEach { (lable) in
+            if rightAnswer == lable?.text ?? "" {
+                rightAnswerLable = lable
+            }
+        }
+        
+        rightAnswerLable?.backgroundColor = .green
         lable.backgroundColor = .red
     }
     
