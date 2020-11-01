@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -46,7 +45,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="iRE-aC-c6w" kind="show" id="rvm-tC-uib"/>
+                                    <segue destination="iRE-aC-c6w" kind="show" identifier="GoToRecords" id="rvm-tC-uib"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -146,34 +145,45 @@
         <!--Root View Controller-->
         <scene sceneID="zxs-9K-iOZ">
             <objects>
-                <tableViewController modalPresentationStyle="fullScreen" id="wTX-xw-TlZ" sceneMemberID="viewController">
+                <tableViewController modalPresentationStyle="fullScreen" id="wTX-xw-TlZ" customClass="RecordsViewController" customModule="WhoWhatnToBeAMilioner" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mYw-OO-28g">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <connections>
                             <outlet property="dataSource" destination="wTX-xw-TlZ" id="MCF-vg-0M6"/>
                             <outlet property="delegate" destination="wTX-xw-TlZ" id="Akl-He-SJK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="ipg-l3-Whw"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="ipg-l3-Whw">
+                        <barButtonItem key="backBarButtonItem" title="Назад" id="jaJ-iE-srX">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lng-WH-M6X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1064" y="839"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Рекорды-->
         <scene sceneID="G2Z-DA-NWB">
             <objects>
                 <navigationController modalPresentationStyle="fullScreen" id="iRE-aC-c6w" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="zmO-wS-Q1Z"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ndJ-6o-Gp9">
+                    <navigationItem key="navigationItem" title="Рекорды" id="zmO-wS-Q1Z">
+                        <barButtonItem key="backBarButtonItem" title="Назад" id="RwE-34-d2O"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="ndJ-6o-Gp9">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jcz-LP-OFH">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
-                        <segue destination="wTX-xw-TlZ" kind="relationship" relationship="rootViewController" id="Eru-p4-oob"/>
+                        <segue destination="wTX-xw-TlZ" kind="relationship" relationship="rootViewController" id="a6d-2M-UNS"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XJK-D9-lef" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -183,8 +193,5 @@
     </scenes>
     <resources>
         <image name="millioner_logo" width="234" height="211"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

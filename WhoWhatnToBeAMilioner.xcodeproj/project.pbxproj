@@ -3,11 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		37F1EA3428AC22AF8094B27F /* Pods_WhoWhatnToBeAMilioner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 625D1587605918AC50F25634 /* Pods_WhoWhatnToBeAMilioner.framework */; };
+		71320419254ED0B1009C24CB /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71320418254ED0B1009C24CB /* RecordsViewController.swift */; };
+		7132041F254ED128009C24CB /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7132041D254ED128009C24CB /* RecordTableViewCell.swift */; };
+		71320420254ED128009C24CB /* RecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7132041E254ED128009C24CB /* RecordTableViewCell.xib */; };
 		71F0350A254971090043D4D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F03509254971090043D4D6 /* AppDelegate.swift */; };
 		71F0350C254971090043D4D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F0350B254971090043D4D6 /* SceneDelegate.swift */; };
 		71F03511254971090043D4D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F0350F254971090043D4D6 /* Main.storyboard */; };
@@ -54,6 +57,9 @@
 		3F672F2ED47F02AD9E027CF4 /* Pods_WhoWhatnToBeAMilionerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhoWhatnToBeAMilionerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		625D1587605918AC50F25634 /* Pods_WhoWhatnToBeAMilioner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhoWhatnToBeAMilioner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		709DBA9077066978CFF2ADEF /* Pods-WhoWhatnToBeAMilionerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhoWhatnToBeAMilionerTests.release.xcconfig"; path = "Target Support Files/Pods-WhoWhatnToBeAMilionerTests/Pods-WhoWhatnToBeAMilionerTests.release.xcconfig"; sourceTree = "<group>"; };
+		71320418254ED0B1009C24CB /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
+		7132041D254ED128009C24CB /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
+		7132041E254ED128009C24CB /* RecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordTableViewCell.xib; sourceTree = "<group>"; };
 		71F03506254971080043D4D6 /* WhoWhatnToBeAMilioner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoWhatnToBeAMilioner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F03509254971090043D4D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71F0350B254971090043D4D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,8 +129,16 @@
 				DCD1C29324D1001496E82EF0 /* Pods-WhoWhatnToBeAMilionerTests.debug.xcconfig */,
 				709DBA9077066978CFF2ADEF /* Pods-WhoWhatnToBeAMilionerTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		71320424254ED130009C24CB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7132041D254ED128009C24CB /* RecordTableViewCell.swift */,
+				7132041E254ED128009C24CB /* RecordTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		71F034FD254971080043D4D6 = {
@@ -154,6 +168,7 @@
 			children = (
 				71F035B02549E4FB0043D4D6 /* Network */,
 				71F0358E2549AB430043D4D6 /* Game Structure */,
+				71320424254ED130009C24CB /* Cells */,
 				71F03546254977730043D4D6 /* Controllers */,
 				71F035712549A0110043D4D6 /* Music */,
 				71F0353F254977100043D4D6 /* Support Files */,
@@ -197,6 +212,7 @@
 			children = (
 				71F035472549779E0043D4D6 /* StartViewController.swift */,
 				71F0354C254977AB0043D4D6 /* GameViewController.swift */,
+				71320418254ED0B1009C24CB /* RecordsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -352,6 +368,7 @@
 			files = (
 				71F03516254971090043D4D6 /* LaunchScreen.storyboard in Resources */,
 				71F03513254971090043D4D6 /* Assets.xcassets in Resources */,
+				71320420254ED128009C24CB /* RecordTableViewCell.xib in Resources */,
 				71F035782549A04B0043D4D6 /* wrong_answer.mp3 in Resources */,
 				71F035732549A0350043D4D6 /* corect_answer.mp3 in Resources */,
 				71F035822549A0AC0043D4D6 /* thinking.mp3 in Resources */,
@@ -485,6 +502,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				71F0356A254983D10043D4D6 /* Game.swift in Sources */,
+				71320419254ED0B1009C24CB /* RecordsViewController.swift in Sources */,
+				7132041F254ED128009C24CB /* RecordTableViewCell.swift in Sources */,
 				71F0354D254977AB0043D4D6 /* GameViewController.swift in Sources */,
 				71F0350A254971090043D4D6 /* AppDelegate.swift in Sources */,
 				71F0350C254971090043D4D6 /* SceneDelegate.swift in Sources */,

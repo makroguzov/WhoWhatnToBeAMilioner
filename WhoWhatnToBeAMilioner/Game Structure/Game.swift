@@ -17,9 +17,8 @@ struct Game {
     private let questions: [Question]
     
     private var userAnswers = [Answer]()
-    private var score: Int = 0
+    private(set) var score: Int = 0
     
-
     private var date: Date = Date()
     
     private var curentQuestionInd: Int = 0
@@ -46,7 +45,7 @@ struct Game {
         case .right:
             score += 10
         default:
-            return
+            break
         }
                 
         userAnswers.append(answer)
@@ -77,9 +76,13 @@ extension Game: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         questions = try container.decode([Question].self, forKey: .questions)
+        print(questions)
         userAnswers = try container.decode([Answer].self, forKey: .userAnswers)
+        print(userAnswers)
         score = try container.decode(Int.self, forKey: .score)
+        print(score)
         date = try container.decode(Date.self, forKey: .date)
+        print(date)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -87,7 +90,7 @@ extension Game: Codable {
         
         try container.encode(questions, forKey: .questions)
         try container.encode(userAnswers, forKey: .userAnswers)
-        try container.encode(score, forKey: .userAnswers)
+        try container.encode(score, forKey: .score)
         try container.encode(date, forKey: .date)
     }
 }

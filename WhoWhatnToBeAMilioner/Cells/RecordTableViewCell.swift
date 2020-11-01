@@ -9,15 +9,22 @@ import UIKit
 
 class RecordTableViewCell: UITableViewCell {
 
+    static let identifier = "RecordTableViewCell"
+    static let nibName = "RecordTableViewCell"
+    
+    @IBOutlet weak var recordLable: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+    }
+    
+    func setUp(with game: Game) {
+        recordLable.text = String(game.score)
     }
     
 }

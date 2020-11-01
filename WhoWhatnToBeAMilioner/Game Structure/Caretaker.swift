@@ -8,7 +8,7 @@
 import Foundation
 
 class Caretaker {
-   
+    
     private let container = UserDefaults.standard
    
     private let gamesKey = "app.obryga.corp.WhoWhatnToBeAMilioner.games"
@@ -21,9 +21,7 @@ class Caretaker {
     
     
     func saveGame(game: Game) {
-        guard var games = container.array(forKey: gamesKey) else {
-            return
-        }
+        var games: [Game] = container.array(forKey: gamesKey) as? [Game] ?? []
         
         if games.count == maxSavedGamesCount {
             games.remove(at: 0)
@@ -32,18 +30,40 @@ class Caretaker {
             games.append(game)
         }
         
-        container.set(games, forKey: gamesKey)
+        do {
+            let data = try encoder.encode(games)
+            container.set(data, forKey: gamesKey)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     func getGames() -> [Game] {
-        guard let games = container.array(forKey: gamesKey) as? [Game] else {
-            return []
+        do {
+            guard let data = container.data(forKey: gamesKey) else {
+                print("werwr")
+                return []
+            }
+            
+            let games = try decoder.decode([Game].self, from: data)
+            return games
+        } catch let DecodingError.dataCorrupted(context){
+            print("\(context.debugDescription) with keys: \(context.codingPath)")
+        } catch let DecodingError.keyNotFound(key, context) {
+            print("\(context.debugDescription) with key: \(key)")
+        } catch let DecodingError.typeMismatch(type, context) {
+            print("\(context.debugDescription) with key: \(type). Keys: \(context.codingPath)")
+        } catch let DecodingError.valueNotFound(type, context) {
+            print("\(context.debugDescription) with key: \(type)")
+        } catch {
+            print(error.localizedDescription)
         }
         
-        return games
+        return []
     }
     
     func getLastGame() -> Game? {
         container.object(forKey: lastGameKey) as? Game
+        
     }
 }

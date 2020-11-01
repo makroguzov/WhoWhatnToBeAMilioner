@@ -52,6 +52,10 @@ class GameViewController: UIViewController {
         loadData()
     }
     
+    deinit {
+        
+    }
+    
     private func loadData() {
         let hud = JGProgressHUD(style: .dark)
         hud.show(in: view)

@@ -47,6 +47,8 @@ class StartViewController: UIViewController {
         switch identifier {
         case "StartTheGame":
             player.stop()
+        case "GoToRecords":
+            player.stop()
         default:
             return
         }
