@@ -16,10 +16,9 @@ struct Game {
     
     private let questions: [Question]
     
-    private var userAnswers = [Answer]()
+    private(set) var userAnswers = [Answer]()
     private(set) var score: Int = 0
-    
-    private var date: Date = Date()
+    private(set) var date: Date = Date()
     
     private var curentQuestionInd: Int = 0
     var question: Question {

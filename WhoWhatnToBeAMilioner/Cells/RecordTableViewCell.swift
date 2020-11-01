@@ -16,6 +16,10 @@ class RecordTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        backgroundColor = .black
+        recordLable.textColor = .white
+        recordLable.numberOfLines = 20
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -24,7 +28,9 @@ class RecordTableViewCell: UITableViewCell {
     }
     
     func setUp(with game: Game) {
-        recordLable.text = String(game.score)
+        recordLable.text = "\(game.date.description(with: .current)) вы набрали \(String(game.score)) очков."
+        recordLable.sizeToFit()
+        
     }
     
 }
