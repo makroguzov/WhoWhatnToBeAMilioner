@@ -37,6 +37,18 @@ class GameViewController: UIViewController {
             setUp(answer4Lable)
         }
     }
+    @IBOutlet weak var finishTheGameButton: UIButton! {
+        didSet {
+            finishTheGameButton.layer.cornerRadius = 20
+            
+            finishTheGameButton.layer.shadowRadius = 10
+            finishTheGameButton.layer.shadowOpacity = 0.8
+            finishTheGameButton.layer.shadowOffset = CGSize.zero
+            finishTheGameButton.layer.shadowColor = UIColor.blue.cgColor
+            
+            finishTheGameButton.clipsToBounds = true
+        }
+    }
     
     private var game: Game = .empty
     
@@ -126,6 +138,21 @@ class GameViewController: UIViewController {
         tapGesture.numberOfTapsRequired = 1
         tapGesture.numberOfTouchesRequired = 1
         lable.addGestureRecognizer(tapGesture)
+    }
+    
+    
+    @IBAction func finishTheGameButtonAction(_ sender: UIButton) {
+        
+        let allert = UIAlertController(title: "Do you whant to exit?", message: "Game won't be saved", preferredStyle: .alert)
+        
+        let yesAction = UIAlertAction(title: "Yes",
+                                      style:.default) { [weak self] (_) in self?.dismiss(animated: true) }
+        let noAction = UIAlertAction(title: "No",
+                                     style: .cancel) { (_) in return }
+        
+        allert.addAction(yesAction)
+        allert.addAction(noAction)
+        self.present(allert, animated: true)
     }
     
     @objc private func tapLableAction(_ sender: UIGestureRecognizer) {

@@ -119,14 +119,29 @@
                                     <constraint firstAttribute="width" constant="300" id="5Wt-t8-J3d"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUV-CW-38Q">
+                                <rect key="frame" x="152" y="722" width="110" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="K5c-iG-UfT"/>
+                                    <constraint firstAttribute="width" constant="110" id="q25-3x-uNX"/>
+                                </constraints>
+                                <state key="normal" title="Выйти из игры">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="finishTheGameButtonAction:" destination="Pgj-Ca-zPo" eventType="touchUpInside" id="bd9-zu-QSm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EfR-UV-R5f"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="EfR-UV-R5f" firstAttribute="bottom" secondItem="deq-yI-hbC" secondAttribute="bottom" constant="200" id="REG-Hg-TQV"/>
                             <constraint firstItem="7zK-dc-7nq" firstAttribute="top" secondItem="EfR-UV-R5f" secondAttribute="top" constant="200" id="fRH-6R-SH1"/>
+                            <constraint firstItem="XUV-CW-38Q" firstAttribute="centerX" secondItem="EfR-UV-R5f" secondAttribute="centerX" id="l8Z-ry-DTJ"/>
                             <constraint firstItem="7zK-dc-7nq" firstAttribute="centerX" secondItem="EfR-UV-R5f" secondAttribute="centerX" id="piZ-ex-QOQ"/>
                             <constraint firstItem="deq-yI-hbC" firstAttribute="centerX" secondItem="EfR-UV-R5f" secondAttribute="centerX" id="uWT-SL-hqC"/>
+                            <constraint firstItem="XUV-CW-38Q" firstAttribute="top" secondItem="87A-fM-cyX" secondAttribute="bottom" constant="60" id="vLc-vJ-vRY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7K4-sd-TSH"/>
@@ -135,6 +150,7 @@
                         <outlet property="answer2Lable" destination="eaq-3B-b5d" id="71q-4H-17z"/>
                         <outlet property="answer3Lable" destination="Y2S-xQ-tpD" id="l5d-EF-NLM"/>
                         <outlet property="answer4Lable" destination="87A-fM-cyX" id="3JW-Ha-zme"/>
+                        <outlet property="finishTheGameButton" destination="XUV-CW-38Q" id="pDO-gZ-D8c"/>
                         <outlet property="questionLable" destination="7zK-dc-7nq" id="rEK-La-QwF"/>
                     </connections>
                 </viewController>

@@ -41,7 +41,7 @@ class Caretaker {
     func getGames() -> [Game] {
         do {
             guard let data = container.data(forKey: gamesKey) else {
-                print("werwr")
+                print("Decode error.")
                 return []
             }
             
@@ -64,6 +64,5 @@ class Caretaker {
     
     func getLastGame() -> Game? {
         container.object(forKey: lastGameKey) as? Game
-        
     }
 }

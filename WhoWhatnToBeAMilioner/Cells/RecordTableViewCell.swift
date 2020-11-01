@@ -30,7 +30,6 @@ class RecordTableViewCell: UITableViewCell {
     func setUp(with game: Game) {
         recordLable.text = "\(game.date.description(with: .current)) вы набрали \(String(game.score)) очков."
         recordLable.sizeToFit()
-        
     }
     
 }
