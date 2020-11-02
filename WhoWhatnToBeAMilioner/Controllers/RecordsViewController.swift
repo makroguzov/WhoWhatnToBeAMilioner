@@ -21,6 +21,13 @@ class RecordsViewController: UITableViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Назад",
+                                                           style: .plain,
+                                                           target: nil,
+                                                           action: nil
+        )
 
         let careTaker = Caretaker()
         games = careTaker.getGames()

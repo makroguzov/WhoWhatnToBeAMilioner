@@ -21,7 +21,7 @@ class Caretaker {
     
     
     func saveGame(game: Game) {
-        var games: [Game] = container.array(forKey: gamesKey) as? [Game] ?? []
+        var games: [Game] = getGames()
         
         if games.count == maxSavedGamesCount {
             games.remove(at: 0)
