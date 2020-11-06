@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ndq-B0-Tbi">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,6 +8,24 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="6lH-9b-xol">
+            <objects>
+                <navigationController interfaceStyle="dark" id="ndq-B0-Tbi" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="uCk-hw-MpS">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ZHE-xe-At1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qzb-xq-g0a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-712" y="112"/>
+        </scene>
         <!--Start View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -17,14 +35,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="millioner_logo" translatesAutoresizingMaskIntoConstraints="NO" id="JnP-uP-lMY">
-                                <rect key="frame" x="107" y="149" width="200" height="200"/>
+                                <rect key="frame" x="107" y="193" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="4Vu-3M-D5y"/>
                                     <constraint firstAttribute="width" secondItem="JnP-uP-lMY" secondAttribute="height" multiplier="1:1" id="PzZ-IU-1dW"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLE-z9-szR">
-                                <rect key="frame" x="107" y="429" width="200" height="48"/>
+                                <rect key="frame" x="107" y="451" width="200" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="tw1-S3-wLk"/>
@@ -34,18 +52,18 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Pgj-Ca-zPo" kind="show" identifier="StartTheGame" id="Py2-vc-uZb"/>
+                                    <segue destination="pey-tE-ij2" kind="show" identifier="StartTheGame" id="HDC-6C-pBz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLy-Kz-YDo">
-                                <rect key="frame" x="107" y="524" width="200" height="48"/>
+                                <rect key="frame" x="107" y="546" width="200" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Рекорды">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="iRE-aC-c6w" kind="show" identifier="GoToRecords" id="rvm-tC-uib"/>
+                                    <segue destination="wTX-xw-TlZ" kind="show" id="OED-sp-vjq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -61,6 +79,8 @@
                             <constraint firstItem="PLy-Kz-YDo" firstAttribute="top" secondItem="sLE-z9-szR" secondAttribute="bottom" constant="47" id="uEc-qb-o4b"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="p4m-39-JKs"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
                         <outlet property="recordsButton" destination="PLy-Kz-YDo" id="lll-bP-4Qn"/>
                         <outlet property="startButton" destination="sLE-z9-szR" id="XMK-Ar-A2a"/>
@@ -69,6 +89,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="67" y="112"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cjQ-OO-CZt">
+            <objects>
+                <navigationController interfaceStyle="dark" navigationBarHidden="YES" id="pey-tE-ij2" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="TeI-Ig-nvP"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sTo-7d-jZW">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Pgj-Ca-zPo" kind="relationship" relationship="rootViewController" id="XTd-XP-Zt5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2sM-TP-fFJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1194" y="112"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="7ga-E0-5XL">
@@ -144,7 +182,8 @@
                             <constraint firstItem="XUV-CW-38Q" firstAttribute="top" secondItem="87A-fM-cyX" secondAttribute="bottom" constant="60" id="vLc-vJ-vRY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="7K4-sd-TSH"/>
+                    <navigationItem key="navigationItem" id="1pV-DE-6Jg"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="answer1Lable" destination="Hau-W8-FAa" id="cXG-YB-HsH"/>
                         <outlet property="answer2Lable" destination="eaq-3B-b5d" id="71q-4H-17z"/>
@@ -156,11 +195,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bo3-cv-zic" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1063.768115942029" y="111.83035714285714"/>
+            <point key="canvasLocation" x="1938" y="112"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Рекорды-->
         <scene sceneID="zxs-9K-iOZ">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lng-WH-M6X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewController modalPresentationStyle="fullScreen" id="wTX-xw-TlZ" customClass="RecordsViewController" customModule="WhoWhatnToBeAMilioner" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mYw-OO-28g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -172,39 +212,12 @@
                             <outlet property="delegate" destination="wTX-xw-TlZ" id="Akl-He-SJK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="ipg-l3-Whw">
-                        <barButtonItem key="backBarButtonItem" title="Назад" id="jaJ-iE-srX">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" title="Рекорды" id="RPW-BU-XRT">
+                        <barButtonItem key="backBarButtonItem" title="Назад" id="0wq-hT-URH"/>
                     </navigationItem>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Lng-WH-M6X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064" y="839"/>
-        </scene>
-        <!--Рекорды-->
-        <scene sceneID="G2Z-DA-NWB">
-            <objects>
-                <navigationController modalPresentationStyle="fullScreen" id="iRE-aC-c6w" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Рекорды" id="zmO-wS-Q1Z">
-                        <barButtonItem key="backBarButtonItem" title="Назад" id="RwE-34-d2O"/>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="ndJ-6o-Gp9">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jcz-LP-OFH">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="wTX-xw-TlZ" kind="relationship" relationship="rootViewController" id="a6d-2M-UNS"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XJK-D9-lef" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="67" y="839"/>
+            <point key="canvasLocation" x="67" y="804"/>
         </scene>
     </scenes>
     <resources>
